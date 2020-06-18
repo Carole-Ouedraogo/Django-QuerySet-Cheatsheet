@@ -138,9 +138,16 @@ Django is a registered trademark of the Django Software Foundation.
 Other:
 
 `python -m venv  venv`
+
 `source venv/bin/activate`
+
 `pip install -r requirements.txt`
+
 `createdb <name>`
+
 `python3 manage.py test`
+
 `python3 manage.py migrate`
+
 `python3 manage.py makemigrations <appname>`
+
