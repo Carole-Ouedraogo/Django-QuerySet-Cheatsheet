@@ -133,3 +133,14 @@ The [contributors](https://github.com/chrisdl/Django-QuerySet-Cheatsheet/graphs/
 
 The Django web framework referenced in the Django-QuerySet-Cheatsheet is ​© 2005-2018 Django Software Foundation.
 Django is a registered trademark of the Django Software Foundation.
+
+
+Other:
+
+`python -m venv  venv`
+`source venv/bin/activate`
+`pip install -r requirements.txt`
+`createdb <name>`
+`python3 manage.py test`
+`python3 manage.py migrate`
+`python3 manage.py makemigrations <appname>`
