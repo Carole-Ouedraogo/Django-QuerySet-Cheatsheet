@@ -21,6 +21,7 @@ Other commands:
 
 `makemigrations <appname>`
 
+ `new_var = _` assigns, and gives you access to previous output in python shell
 
 
 **Can be chained:**
