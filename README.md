@@ -5,6 +5,15 @@ Current Django Version: [3.0](https://docs.djangoproject.com/en/3.0/ref/models/q
 
 Other commands:
 
+1. Create Database
+2. Set up your models
+3. Run makemigrations `
+4. Run python manage.py migrate
+5. If you make alterations to models, rerun the migrations commands to update db.
+6. Tests to pass: python manage.py test --failfest
+
+`python manage.py shell_plus`
+
 `python -m venv  venv`
 
 `source venv/bin/activate`
@@ -17,9 +26,9 @@ Other commands:
 
 `python3 manage.py migrate`
 
-`python3 manage.py`
+`python3 manage.py makemigrations <appname>`
 
-`makemigrations <appname>`
+`python manage.py test --failfest`
 
  `new_var = _` assigns, and gives you access to previous output in python shell
 
