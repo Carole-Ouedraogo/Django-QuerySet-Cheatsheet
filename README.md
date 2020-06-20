@@ -12,25 +12,43 @@ Other commands:
 5. If you make alterations to models, rerun the migrations commands to update db.
 6. Tests to pass: python manage.py test --failfest
 
-`python manage.py shell_plus`
+`python manage.py shell_plus` to complete commands in the py shell
 
-`python -m venv  venv`
+`python -m venv  venv` create a virtual encironment
 
-`source venv/bin/activate`
+`source venv/bin/activate` activate virtual environment venv
 
-`pip install -r requirements.txt`
+`pip install -r requirements.txt` install all the
 
-`createdb <name>`
+`django-admin.py startproject <project_name>` start a new Django project
+
+`git init` Initialize new Git repo
+
+`git add -A` add your changes to staging and then to the local repo.
+
+`git commit -am` initial commit
+
+`git remote add origin` PUSH your files to central repo.
+
+`git remote add origin github.com/Carole-Ouedraogo/new_repo`
+
+`git push -u origin master`
+
+`createdb <db_name>`
 
 `python3 manage.py test`
 
 `python3 manage.py migrate`
 
-`python3 manage.py makemigrations <appname>`
+`python3 manage.py makemigrations <app_name>`
 
-`python manage.py test --failfest`
+`python manage.py test --failfest` test file is run 
 
  `new_var = _` assigns, and gives you access to previous output in python shell
+ 
+ `ON DELETE CASCADE` delete child when parent is deleted
+ 
+ `ON DELETE SET NULL` set null when parent is deleted
 
 
 **Can be chained:**
