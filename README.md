@@ -67,15 +67,15 @@ Views access the data needed to satisfy requests via models, and delegate the fo
 While it is possible to process requests from every single URL via a single function, it is much more maintainable to write a separate view function to handle each resource. A URL mapper is used to redirect HTTP requests to the appropriate view based on the request URL. 
 The URL mapper can also match particular patterns of strings or digits that appear in a URL and pass these to a view function as data.
 
-`from django.urls import path
+    from django.urls import path
 
- from . import views
+     from . import views
  
- urlpatterns = [
+        urlpatterns = [
  
-  path('', views.index, name='index'),
-  
- ]`
+        path('', views.index, name='index'),
+ 
+        ]
 
 # 8. URLs for project.  
 
@@ -83,17 +83,17 @@ When Django encounters include(), it chops off whatever part of the URL matched 
 sends the remaining string to the included URLconf for further processing.
 URLconf is like a table of contents for your Django-powered Web site.
 
-`from django.contrib import admin
+     from django.contrib import admin
 
- from django.urls import include, path
- 
- urlpatterns = [
- 
-  path('polls/', include('polls.urls')),
-  
-  path('admin/', admin.site.urls),
-  
- ]`
+     from django.urls import include, path
+
+     urlpatterns = [
+
+      path('polls/', include('polls.urls')),
+
+      path('admin/', admin.site.urls),
+
+     ]
 
 # 9. A index view is now wiredinto the URLconf. Verify it’s working with:
 
