@@ -12,7 +12,7 @@ MVC Application : Model - View - Controllers
 `django-admin startproject mysite` 
 
 
-`mysite/            --> A container for your project/ can be renamed.   
+    mysite/            --> A container for your project/ can be renamed.   
 
     manage.py       --> A command-line utility that lets you interact with this Django project. 
     
@@ -56,9 +56,11 @@ Quit the server with CONTROL-C.
 
 A view is a request handler function, which receives HTTP requests and returns HTTP responses. 
 Views access the data needed to satisfy requests via models, and delegate the formatting of the response to templates.
-`from django.http import HttpResponse
-  def index(request):
-    return HttpResponse()`
+`from django.http import HttpResponse`
+
+  `def index(request):`
+  
+    `return HttpResponse()`
     
 # 7. URLs for App: 
 
@@ -66,9 +68,13 @@ While it is possible to process requests from every single URL via a single func
 The URL mapper can also match particular patterns of strings or digits that appear in a URL and pass these to a view function as data.
 
 `from django.urls import path
+
  from . import views
+ 
  urlpatterns = [
+ 
   path('', views.index, name='index'),
+  
  ]`
 
 # 8. URLs for project.  
@@ -78,10 +84,15 @@ sends the remaining string to the included URLconf for further processing.
 URLconf is like a table of contents for your Django-powered Web site.
 
 `from django.contrib import admin
+
  from django.urls import include, path
+ 
  urlpatterns = [
+ 
   path('polls/', include('polls.urls')),
+  
   path('admin/', admin.site.urls),
+  
  ]`
 
 # 9. A index view is now wiredinto the URLconf. Verify it’s working with:
@@ -99,13 +110,21 @@ Add APP_name under
 If you are not using SQLite as your database, additional settings such as USER, PASSWORD, and HOST
 
 `DATABASES = {
+
     'default': {
+    
         'ENGINE': 'django.db.backends.postgresql',
+        
         'NAME': 'mydatabase',
+        
         'USER': 'mydatabaseuser',
+        
         'PASSWORD': 'mypassword',
+        
         'HOST': '127.0.0.1',
+        
         'PORT': '5432',
+        
     }
 }`
 
@@ -119,11 +138,13 @@ Models are Python objects that define the structure of an application's data, an
 Here, each model is represented by a class that subclasses django.db.models.Model. Each model has a number of class variables, each of which represents a database field in the model.
   # App/models.py
   
-  `from django.db import models
+    from django.db import models
 
-  class Question(models.Model):
-      question_text = models.CharField(max_length=200)
-      pub_date = models.DateTimeField('date published')`
+    class Question(models.Model):
+  
+        question_text = models.CharField(max_length=200)
+      
+        pub_date = models.DateTimeField('date published')
       
 # 14 Activate models
 
@@ -133,11 +154,13 @@ The model code gives Django a lot of information. With it, Django is able to:
    after telling the project that the app is installed in the project INSTALLED_APPS section in settings.
    
    `python3 manage.py makemigrations <app_name>`, then run
+   
    `python manage.py migrate`
    
 # 15 Playing with the API/Python shell
 
 Now, let’s hop into the interactive Python shell and play around with the free API Django gives you. To invoke the Python shell, use this command:
+
 `python manage.py shell`
 
 # 16 __str__() AND  Model.__str__()
@@ -145,8 +168,11 @@ Now, let’s hop into the interactive Python shell and play around with the free
 It’s important to add __str__() methods to your models, not only for your own convenience when dealing with the interactive prompt, but also because objects’ representations are used throughout Django’s automatically-generated admin.
 
 `class Choice(models.Model):
+
     # ...
+    
     def __str__(self):
+    
         return self.choice_text`
 
 
