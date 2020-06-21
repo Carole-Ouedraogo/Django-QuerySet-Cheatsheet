@@ -8,6 +8,7 @@ MVC Application : Model - View - Controllers
 # Creatin a Django Project:
 
 # 1. Start a Project:
+
 `django-admin startproject mysite` 
 
 `
@@ -31,20 +32,28 @@ mysite/            --> A container for your project/ can be renamed.
         
         
 # 2. Verify Django project works. Change into the outer mysite directory
+
 `python manage.py runserver`
+
 Starting development server at http://127.0.0.1:8000/
+
 Quit the server with CONTROL-C.
 
+
 # 3. Changing the port from the default development server on the internal IP at port 8000.
+
 `python manage.py runserver 8080`
 
 # 4. Changing the server’s IP, pass it along with the port. 
+
 `python manage.py runserver 0:8000`
 
 # 5. Create your app, make sure you’re in the same directory as manage.py , use:
+
 `python manage.py startapp name`
 
-# 6. Views: 
+# 6. Views:
+
 A view is a request handler function, which receives HTTP requests and returns HTTP responses. 
 Views access the data needed to satisfy requests via models, and delegate the formatting of the response to templates.
 `from django.http import HttpResponse
@@ -52,6 +61,7 @@ Views access the data needed to satisfy requests via models, and delegate the fo
     return HttpResponse()`
     
 # 7. URLs for App: 
+
 While it is possible to process requests from every single URL via a single function, it is much more maintainable to write a separate view function to handle each resource. A URL mapper is used to redirect HTTP requests to the appropriate view based on the request URL. 
 The URL mapper can also match particular patterns of strings or digits that appear in a URL and pass these to a view function as data.
 
@@ -62,6 +72,7 @@ The URL mapper can also match particular patterns of strings or digits that appe
  ]`
 
 # 8. URLs for project.  
+
 When Django encounters include(), it chops off whatever part of the URL matched up to that point and 
 sends the remaining string to the included URLconf for further processing.
 URLconf is like a table of contents for your Django-powered Web site.
@@ -74,15 +85,19 @@ URLconf is like a table of contents for your Django-powered Web site.
  ]`
 
 # 9. A index view is now wiredinto the URLconf. Verify it’s working with:
+
 `python manage.py runserver`
 
 # Database setup
 
 # 10. Now, open up mysite/settings.py
+
 Add APP_name under 
 
 # 11. Add Database:
+
 If you are not using SQLite as your database, additional settings such as USER, PASSWORD, and HOST
+
 `DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -95,12 +110,15 @@ If you are not using SQLite as your database, additional settings such as USER, 
 }`
 
 # 12. Make. migration
+
 The migrate command looks at the INSTALLED_APPS setting and creates any necessary database tables according to the database settings in your mysite/settings.py file and the database migrations shipped with the app (Look at #14). 
 
 # 13. In our app, create models:
+
 Models are Python objects that define the structure of an application's data, and provide mechanisms to manage (add, modify, delete) and query records in the database.
 Here, each model is represented by a class that subclasses django.db.models.Model. Each model has a number of class variables, each of which represents a database field in the model.
   # App/models.py
+  
   `from django.db import models
 
   class Question(models.Model):
@@ -108,6 +126,7 @@ Here, each model is represented by a class that subclasses django.db.models.Mode
       pub_date = models.DateTimeField('date published')`
       
 # 14 Activate models
+
 The model code gives Django a lot of information. With it, Django is able to:
  a. Create a database schema (CREATE TABLE statements) for this app.
  b. Create a Python database-access API for accessing Question and Choice objects.
@@ -117,10 +136,12 @@ The model code gives Django a lot of information. With it, Django is able to:
    `python manage.py migrate`
    
 # 15 Playing with the API/Python shell
+
 Now, let’s hop into the interactive Python shell and play around with the free API Django gives you. To invoke the Python shell, use this command:
 `python manage.py shell`
 
 # 16 __str__() AND  Model.__str__()
+
 It’s important to add __str__() methods to your models, not only for your own convenience when dealing with the interactive prompt, but also because objects’ representations are used throughout Django’s automatically-generated admin.
 
 `class Choice(models.Model):
@@ -130,6 +151,7 @@ It’s important to add __str__() methods to your models, not only for your own 
 
 
 # Templates: 
+
 A template is a text file defining the structure or layout of a file (such as an HTML page), with placeholders used to represent actual content. A view can dynamically create an HTML page using an HTML template, populating it with data from a model. A template can be used to define the structure of any type of file; it doesn't have to be HTML!
 
 
