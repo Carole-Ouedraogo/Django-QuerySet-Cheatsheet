@@ -10,7 +10,7 @@ MVC Application : Model - View - Controllers
 # 1. Start a Project:
 `django-admin startproject mysite` 
 
-mysite/             --> A container for your project/ can be renamed.   
+`mysite/             --> A container for your project/ can be renamed.   
     manage.py       --> A command-line utility that lets you interact with this Django project.  
     mysite/.        --> Actual Python package for your project     
         __init__.py --> An empty file that tells Python that this directory should be considered a Python package.    
@@ -20,7 +20,7 @@ mysite/             --> A container for your project/ can be renamed.
         
         asgi.py     --> An entry-point for ASGI-compatible web servers to serve your project.   
          
-        wsgi.py     --> An entry-point for WSGI-compatible web servers to serve your project.   
+        wsgi.py     --> An entry-point for WSGI-compatible web servers to serve your project.`   
         
         
 # 2. Verify Django project works. Change into the outer mysite directory
