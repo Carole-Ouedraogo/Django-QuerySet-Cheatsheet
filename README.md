@@ -3,13 +3,26 @@ Current Django Version: [3.0](https://docs.djangoproject.com/en/3.0/ref/models/q
 
 ## Methods that return new [QuerySets](https://docs.djangoproject.com/en/3.0/ref/models/querysets/#methods-that-return-new-querysets)
 
-MVC Application : Model - View - Controllers
+
+Dajngo uses MVC system : Model - View - Controllers
 
 # Creatin a Django Project:
 
+
+`python -m venv  venv` create a virtual encironment
+
+`source venv/bin/activate` activate virtual environment venv
+
+`pip install -r requirements.txt` install all the
+
+# 0. Create Database:
+
+`createdb db_name `
+
 # 1. Start a Project:
 
-`django-admin startproject mysite` 
+
+`django-admin startproject <name> .`  This makes sure that the project is not nested
 
 
     mysite/            --> A container for your project/ can be renamed.   
@@ -40,17 +53,53 @@ Starting development server at http://127.0.0.1:8000/
 Quit the server with CONTROL-C.
 
 
-# 3. Changing the port from the default development server on the internal IP at port 8000.
+# Changing the port from the default development server on the internal IP at port 8000.
 
 `python manage.py runserver 8080`
 
-# 4. Changing the server’s IP, pass it along with the port. 
+# Changing the server’s IP, pass it along with the port. 
 
 `python manage.py runserver 0:8000`
 
-# 5. Create your app, make sure you’re in the same directory as manage.py , use:
+# 3. Create your app, make sure you’re in the same directory as manage.py , use:
 
 `python manage.py startapp name`
+
+
+# 4. Make. migration
+
+The migrate command looks at the INSTALLED_APPS setting and creates any necessary database tables according to the database settings in your project/settings.py file and the database migrations shipped with the app (Next migrations will completed after the models are ceated, look at #7). 
+ 
+ `python manage.py migrate`
+
+
+`python manage.py create superuser`
+
+
+# 13. In our app, create models:
+
+Models are Python objects that define the structure of an application's data, and provide mechanisms to manage (add, modify, delete) and query records in the database.
+Here, each model is represented by a class that subclasses django.db.models.Model. Each model has a number of class variables, each of which represents a database field in the model.
+  # App/models.py
+  
+    from django.db import models
+
+    class Question(models.Model):
+  
+        question_text = models.CharField(max_length=200)
+      
+        pub_date = models.DateTimeField('date published')
+      
+# 14 Activate models
+
+The model code gives Django a lot of information. With it, Django is able to:
+ a. Create a database schema (CREATE TABLE statements) for this app.
+ b. Create a Python database-access API for accessing Question and Choice objects.
+   after telling the project that the app is installed in the project INSTALLED_APPS section in settings.
+   
+   `python manage.py makemigrations <app_name>`, then run
+   
+   `python manage.py migrate <app_name>`
 
 # 6. Views:
 
@@ -99,81 +148,47 @@ URLconf is like a table of contents for your Django-powered Web site.
 
 `python manage.py runserver`
 
-# Database setup
+# 10. Completing Setup In project/settings.py
 
-# 10. Now, open up mysite/settings.py
+ # Add Installed_apps 
 
-Add APP_name under 
+    Add'APP_name', 'django_extensions' under INSTALLED_APPS 
 
-# 11. Add Database:
+ # Add Database:
 
-If you are not using SQLite as your database, additional settings such as USER, PASSWORD, and HOST
+    If you are not using SQLite as your database, additional settings such as USER, PASSWORD, and HOST
 
-`DATABASES = {
+    `DATABASES = {
 
-    'default': {
-    
-        'ENGINE': 'django.db.backends.postgresql',
-        
-        'NAME': 'mydatabase',
-        
-        'USER': 'mydatabaseuser',
-        
-        'PASSWORD': 'mypassword',
-        
-        'HOST': '127.0.0.1',
-        
-        'PORT': '5432',
-        
-    }
-}`
+        'default': {
 
-# 12. Make. migration
+            'ENGINE': 'django.db.backends.postgresql',
 
-The migrate command looks at the INSTALLED_APPS setting and creates any necessary database tables according to the database settings in your mysite/settings.py file and the database migrations shipped with the app (Look at #14). 
+            'NAME': 'mydatabase'
+        }
+    }`
 
-# 13. In our app, create models:
 
-Models are Python objects that define the structure of an application's data, and provide mechanisms to manage (add, modify, delete) and query records in the database.
-Here, each model is represented by a class that subclasses django.db.models.Model. Each model has a number of class variables, each of which represents a database field in the model.
-  # App/models.py
-  
-    from django.db import models
 
-    class Question(models.Model):
-  
-        question_text = models.CharField(max_length=200)
-      
-        pub_date = models.DateTimeField('date published')
-      
-# 14 Activate models
 
-The model code gives Django a lot of information. With it, Django is able to:
- a. Create a database schema (CREATE TABLE statements) for this app.
- b. Create a Python database-access API for accessing Question and Choice objects.
-   after telling the project that the app is installed in the project INSTALLED_APPS section in settings.
-   
-   `python3 manage.py makemigrations <app_name>`, then run
-   
-   `python manage.py migrate`
    
 # 15 Playing with the API/Python shell
 
 Now, let’s hop into the interactive Python shell and play around with the free API Django gives you. To invoke the Python shell, use this command:
 
-`python manage.py shell`
+`python manage.py shell_plus`
 
 # 16 __str__() AND  Model.__str__()
 
 It’s important to add __str__() methods to your models, not only for your own convenience when dealing with the interactive prompt, but also because objects’ representations are used throughout Django’s automatically-generated admin.
 
-`class Choice(models.Model):
+    class Choice(models.Model):
 
-    # ...
+        # ...
     
     def __str__(self):
     
-        return self.choice_text`
+        return self.choice_text
 
 
 # Templates: 
