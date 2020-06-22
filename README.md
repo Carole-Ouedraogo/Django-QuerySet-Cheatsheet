@@ -13,7 +13,7 @@ Dajngo uses MVC system : Model - View - Controllers
 
 `source venv/bin/activate` activate virtual environment venv
 
-`pip install -r requirements.txt` install all the
+`pip install -r requirements.txt` install all the required tools
 
 # 0. Create Database:
 
@@ -73,7 +73,7 @@ The migrate command looks at the INSTALLED_APPS setting and creates any necessar
  `python manage.py migrate`
 
 
-`python manage.py create superuser`
+`python manage.py createsuperuser`
 
 
 # 13. In our app, create models:
