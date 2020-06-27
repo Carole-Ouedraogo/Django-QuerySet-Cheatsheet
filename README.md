@@ -191,6 +191,14 @@ It’s important to add __str__() methods to your models, not only for your own 
         return self.choice_text
 
 
+
+# settings.py
+
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, "static"),
+    ]
+
+
 # Templates: 
 
 A template is a text file defining the structure or layout of a file (such as an HTML page), with placeholders used to represent actual content. A view can dynamically create an HTML page using an HTML template, populating it with data from a model. A template can be used to define the structure of any type of file; it doesn't have to be HTML!
